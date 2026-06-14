@@ -8,10 +8,10 @@ Authors: Pablo Rodriguez, Adrian Segura
 ------------------------------------------------------------------------
 1. CONTENTS OF THE SUBMISSION
 ------------------------------------------------------------------------
-- bank_marketing_ml_project.ipynb   The complete, executed notebook.
+- Code.ipynb   			    The complete, executed notebook.
 - Bank_Marketing_Dataset.csv        The dataset (45,211 rows, 17 columns).
 - Reproducibility_File.txt          This file.
-- ML.pdf                            The technical report.
+- Technical_Report.pdf  	    The technical report.
 
 ------------------------------------------------------------------------
 2. ENVIRONMENT
@@ -75,14 +75,3 @@ Install them all with a single command:
 
 Running the notebook as described reproduces every number, table and
 figure reported in the technical report.
-
-------------------------------------------------------------------------
-6. NOTES
-------------------------------------------------------------------------
-- The kernel SVM (Phase III) is trained on a stratified subsample of
-  8,000 instances (SVM_SUBSAMPLE), as explained in the report; this keeps
-  its runtime practical without affecting the conclusions.
-- Key configuration constants (number of estimators, CV folds, grid
-  sizes, etc.) are gathered in the first configuration cell of the
-  notebook and can be inspected there.
-========================================================================
