@@ -1,0 +1,88 @@
+========================================================================
+REPRODUCIBILITY FILE
+Predicting Term Deposit Subscriptions with Machine Learning
+ML Final Project - Master in Data Science (UPC-FIB)
+Authors: Pablo Rodriguez, Adrian Segura
+========================================================================
+
+------------------------------------------------------------------------
+1. CONTENTS OF THE SUBMISSION
+------------------------------------------------------------------------
+- bank_marketing_ml_project.ipynb   The complete, executed notebook.
+- Bank_Marketing_Dataset.csv        The dataset (45,211 rows, 17 columns).
+- Reproducibility_File.txt          This file.
+- ML.pdf                            The technical report.
+
+------------------------------------------------------------------------
+2. ENVIRONMENT
+------------------------------------------------------------------------
+- Python 3.12 (developed and tested on 3.12.0; any Python >= 3.10 works).
+- Operating system independent (Windows, macOS or Linux).
+- The notebook runs end to end on a standard laptop (CPU only); no GPU is
+  required. Full execution takes a few minutes.
+
+------------------------------------------------------------------------
+3. REQUIRED LIBRARIES
+------------------------------------------------------------------------
+The project uses only standard scientific-Python packages:
+
+    numpy
+    pandas
+    matplotlib
+    seaborn
+    scikit-learn
+    scipy
+
+Install them all with a single command:
+
+    pip install numpy pandas matplotlib seaborn scikit-learn scipy
+
+(Recommended versions, matching the development environment:
+ numpy>=1.26, pandas>=2.0, matplotlib>=3.8, seaborn>=0.13,
+ scikit-learn>=1.4, scipy>=1.11. The code uses no version-specific
+ features and should work with any recent release.)
+
+------------------------------------------------------------------------
+4. HOW TO RUN
+------------------------------------------------------------------------
+1. Place bank_marketing_ml_project.ipynb and Bank_Marketing_Dataset.csv
+   in the SAME folder. The notebook loads the data with the relative path
+   DATA_PATH = 'Bank_Marketing_Dataset.csv', so no path editing is needed
+   as long as both files sit together.
+
+2. Open the notebook with Jupyter or VS Code:
+
+       jupyter notebook bank_marketing_ml_project.ipynb
+
+3. Run the cells from top to bottom (in Jupyter: Kernel > Restart & Run
+   All). The cells are designed to be executed in order; some later cells
+   reuse objects defined earlier (e.g. the preprocessing pipeline, the CV
+   splitters and the fitted models), so out-of-order execution may fail.
+
+------------------------------------------------------------------------
+5. REPRODUCIBILITY
+------------------------------------------------------------------------
+- A single global random seed (SEED = 42) is fixed at the top of the
+  notebook and propagated to every stochastic step: the train/test split,
+  all model random_state arguments, the cross-validation splitters, the
+  SVM subsampling, and the permutation-importance repeats.
+- The 80/20 train/test split is stratified, so the 17.5% positive rate is
+  preserved across both partitions.
+- All preprocessing (imputation, one-hot encoding, scaling) is contained
+  inside scikit-learn Pipelines that are re-fitted within each
+  cross-validation fold; the held-out test set is used only once, for the
+  final evaluation.
+
+Running the notebook as described reproduces every number, table and
+figure reported in the technical report.
+
+------------------------------------------------------------------------
+6. NOTES
+------------------------------------------------------------------------
+- The kernel SVM (Phase III) is trained on a stratified subsample of
+  8,000 instances (SVM_SUBSAMPLE), as explained in the report; this keeps
+  its runtime practical without affecting the conclusions.
+- Key configuration constants (number of estimators, CV folds, grid
+  sizes, etc.) are gathered in the first configuration cell of the
+  notebook and can be inspected there.
+========================================================================
